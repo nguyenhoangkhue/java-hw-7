@@ -7,7 +7,8 @@ public class Book {
     private String category;
     private String publisher;
     private int year;
-
+    public Book(){
+    }
     public String getId() {
         return id;
     }

@@ -8,17 +8,17 @@ public class Hw {
 
         ArrayList<Book>arrBook=new ArrayList<>();
 
-        Book book=new Book();
-        book.setId("1234");
-        book.setTitle("Huhu");
-        book.setAuthor("Khue");
-        book.setCategory("action");
-        book.setPublisher("Khue");
-        book.setYear(2023);
+        Book book1=new Book("a1","b1","c1","d1","e1",2022);
+        Book book2=new Book("a2","b2","c2","d2","e2",2023);
+        Book book3=new Book("a3","b3","c3","d3","e3",2023);
 
-        arrBook.add(book);
+        arrBook.add(book1);
+        arrBook.add(book2);
+        arrBook.add(book3);
 
-        System.out.println(showInfo(book));
+        for (int i=0; i<arrBook.size(); i++){
+            System.out.println(arrBook.get(i));
+        }
 
         System.out.println("Nhập tên sách cần tìm");
         String findTitle= sc.nextLine();
@@ -37,8 +37,5 @@ public class Hw {
             if (arrBook.get(i).getYear()==2023)
                 System.out.println(arrBook.get(i));
         }
-    }
-    public static String showInfo(Book book){
-        return book.toString();
     }
 }

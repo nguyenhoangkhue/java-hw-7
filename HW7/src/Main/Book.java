@@ -9,6 +9,14 @@ public class Book {
     private int year;
     public Book(){
     }
+    public Book(String id, String title, String author, String category, String publisher, int year){
+        this.id=id;
+        this.title=title;
+        this.author=author;
+        this.category=category;
+        this.publisher=publisher;
+        this.year=year;
+    }
     public String getId() {
         return id;
     }

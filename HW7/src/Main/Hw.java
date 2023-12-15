@@ -1,10 +1,12 @@
 package Main;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Hw {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
+
+        ArrayList<Book>arrBook=new ArrayList<>();
 
         Book book=new Book();
         book.setId("1234");
@@ -14,58 +16,29 @@ public class Hw {
         book.setPublisher("Khue");
         book.setYear(2023);
 
-        while (true){
-            System.out.println("Book management");
-            System.out.println("Enter 1: To search books by title");
-            System.out.println("Enter 2: To search books by category");
-            System.out.println("Enter 3: To list books published this year");
-            String line= sc.nextLine();
-            switch (line){
-                case "1":{
-                    System.out.println("Enter title: ");
-                    String title=sc.nextLine();
-                    if (title==Title(book)){
-                        System.out.println(showInfo(book));
-                        break;
-                    } else {
-                        System.out.println("Invalid");
-                    }
-                    break;
-                }
-                case "2":{
-                    System.out.println("Enter category: ");
-                    String category=sc.nextLine();
-                    if (category==Category(book)){
-                        System.out.println(showInfo(book));
-                        break;
-                    }else {
-                        System.out.println("Invalid");
-                    }
-                    break;
-                }
-                case "3":{
-                    if (book.getYear()==2023){
-                        System.out.println(showInfo(book));
-                        break;
-                    }else {
-                        System.out.print("");
-                    }
-                    break;
-                }
-                default:{
-                    System.out.println("Invalid");
-                    break;
-                }
-            }
+        arrBook.add(book);
+
+        System.out.println(showInfo(book));
+
+        System.out.println("Nhập tên sách cần tìm");
+        String findTitle= sc.nextLine();
+        for (int i=0;i<arrBook.size();i++){
+            if (arrBook.get(i).getTitle().equalsIgnoreCase(findTitle))
+                System.out.println(arrBook.get(i));
+        }
+        System.out.println("Nhập thể loại sách cần tìm");
+        String findCategory= sc.nextLine();
+        for (int i=0;i<arrBook.size();i++){
+            if (arrBook.get(i).getCategory().equalsIgnoreCase(findCategory))
+                System.out.println(arrBook.get(i));
+        }
+        System.out.println("Sách được suất bản trong năm nay là: ");
+        for (int i=0;i<arrBook.size();i++){
+            if (arrBook.get(i).getYear()==2023)
+                System.out.println(arrBook.get(i));
         }
     }
     public static String showInfo(Book book){
         return book.toString();
-    }
-    public static String Title(Book book){
-        return book.getTitle();
-    }
-    public static String Category(Book book){
-        return book.getCategory();
     }
 }
